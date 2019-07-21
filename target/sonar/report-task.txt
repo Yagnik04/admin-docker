@@ -1,0 +1,6 @@
+projectKey=com.idexcel:admin-service
+serverUrl=http://sonar.idexceldemo.com:9000
+serverVersion=7.1.0.11001
+dashboardUrl=http://sonar.idexceldemo.com:9000/dashboard/index/com.idexcel:admin-service
+ceTaskId=AWv3Q3lkO7et1HsD7mT7
+ceTaskUrl=http://sonar.idexceldemo.com:9000/api/ce/task?id=AWv3Q3lkO7et1HsD7mT7

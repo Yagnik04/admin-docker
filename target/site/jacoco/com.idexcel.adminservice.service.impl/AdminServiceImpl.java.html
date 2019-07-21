@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AdminServiceImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">admin-service</a> &gt; <a href="index.source.html" class="el_package">com.idexcel.adminservice.service.impl</a> &gt; <span class="el_source">AdminServiceImpl.java</span></div><h1>AdminServiceImpl.java</h1><pre class="source lang-java linenums">package com.idexcel.adminservice.service.impl;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.stereotype.Service;
+
+import com.idexcel.adminservice.dao.AdminRepository;
+import com.idexcel.adminservice.entity.Address;
+import com.idexcel.adminservice.entity.Admin;
+import com.idexcel.adminservice.service.AdminService;
+
+@Service
+public class AdminServiceImpl implements AdminService {
+
+	private AdminRepository adminRepository;
+	
+	@Autowired
+<span class="fc" id="L24">	public AdminServiceImpl(AdminRepository adminRepository) {</span>
+<span class="fc" id="L25">		this.adminRepository = adminRepository;</span>
+<span class="fc" id="L26">	}</span>
+	
+	@Override
+	public List&lt;Admin&gt; findAllAdmins() {
+		// TODO Auto-generated method stub
+<span class="nc" id="L31">		List&lt;Admin&gt; admins = adminRepository.findAll(Sort.by(Direction.DESC,&quot;createdDate&quot;));</span>
+		
+<span class="nc" id="L33">		return admins;</span>
+	}
+
+	@Override
+	public Admin findById(String id) {
+		// TODO Auto-generated method stub
+<span class="nc" id="L39">		Optional&lt;Admin&gt; result = adminRepository.findById(id);</span>
+<span class="nc" id="L40">		Admin admin = null;</span>
+<span class="nc bnc" id="L41" title="All 2 branches missed.">		if(result.isPresent()) {</span>
+<span class="nc" id="L42">			admin = result.get();</span>
+		}
+<span class="nc" id="L44">		return admin;</span>
+	}
+
+	@Override
+	public void deleteById(String id) {
+		// TODO Auto-generated method stub
+<span class="nc" id="L50">		adminRepository.deleteById(id);</span>
+<span class="nc" id="L51">	}</span>
+
+	@Override
+	public String saveAdmin(Admin admin) {
+		// TODO Auto-generated method stub
+		
+<span class="nc" id="L57">		adminRepository.insert(admin);</span>
+		
+<span class="nc" id="L59">		return admin.getId();</span>
+	}
+
+	@Override
+	public void updateAdmin(Admin admin) {
+		// TODO Auto-generated method stub
+
+<span class="nc" id="L66">		adminRepository.save(admin);</span>
+<span class="nc" id="L67">	}</span>
+
+	@Override
+	public boolean checkHead(String id) {
+<span class="nc" id="L71">		return adminRepository.existsById(id);</span>
+	}
+	
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>
