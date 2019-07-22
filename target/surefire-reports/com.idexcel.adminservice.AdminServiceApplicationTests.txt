@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.idexcel.adminservice.AdminServiceApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 18.586 s - in com.idexcel.adminservice.AdminServiceApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 10.239 s - in com.idexcel.adminservice.AdminServiceApplicationTests
