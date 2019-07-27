@@ -8,11 +8,14 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import com.idexcel.adminservice.dao.AdminRepository;
 import com.idexcel.adminservice.entity.Address;
 import com.idexcel.adminservice.entity.Admin;
+import com.idexcel.adminservice.entity.Book;
 import com.idexcel.adminservice.service.AdminService;
 
 @Service
@@ -69,6 +72,21 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public boolean checkHead(String id) {
 		return adminRepository.existsById(id);
+	}
+
+	@Override
+	public ResponseEntity<Book> getBookFromOtherRestEp(int id) {
+		
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<Book> book = restTemplate.getForEntity("https://jsonplaceholder.typicode.com/todos/" +id, Book.class);
+		return book;
+	}
+	
+	public ResponseEntity<List> getBooksFromOtherRestEp(){
+		
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<List> books = restTemplate.getForEntity("https://jsonplaceholder.typicode.com/todos", List.class);
+		return books;
 	}
 	
 	

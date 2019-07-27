@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.idexcel.adminservice.dto.AdminDTO;
 import com.idexcel.adminservice.entity.Admin;
-
+import com.idexcel.adminservice.entity.Book;
 import com.idexcel.adminservice.exception.*;
 import com.idexcel.adminservice.service.AdminService;
 
@@ -45,6 +45,16 @@ public class AdminServiceRestController {
 	@GetMapping("/")
 	public String checkEndpoint() {
 		return "Hello world";
+	}
+	
+	@GetMapping("/book/{id}")
+	public ResponseEntity<Book> getBookFromOtherRestEp(@PathVariable int id){
+		return adminService.getBookFromOtherRestEp(id);
+	}
+	
+	@GetMapping("/books")
+	public ResponseEntity<List> getBooksFromOtherRestEp(){
+		return adminService.getBooksFromOtherRestEp();
 	}
 	
 	@GetMapping("/lenders")
